@@ -138,7 +138,6 @@ filegroup(
         "@gif_archive//:COPYING",
         "@grpc//:LICENSE",
         "@highwayhash//:LICENSE",
-        "@jemalloc//:COPYING",
         "@jpeg//:LICENSE.md",
         "@kafka//:LICENSE",
         "@libxsmm_archive//:LICENSE",

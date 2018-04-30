@@ -4,7 +4,12 @@
 
 licenses(["notice"])  # MIT
 
-exports_files(["LICENSE"])
+genrule(
+    name = "copy-six-license",
+    outs = ["LICENSE"],
+    cmd = "bzcat /usr/share/doc/six-*/README.rst.bz2 > $@",
+    visibility = ["//visibility:public"],
+)
 
 py_library(
     name = "six",

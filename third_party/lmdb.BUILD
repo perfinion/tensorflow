@@ -3,35 +3,21 @@
 
 licenses(["notice"])  # OpenLDAP Public License
 
-exports_files(["LICENSE"])
+#exports_files(["LICENSE"])
 
 cc_library(
     name = "lmdb",
-    srcs = [
-        "mdb.c",
-        "midl.c",
-    ],
     hdrs = [
         "lmdb.h",
         "midl.h",
     ],
-    copts = [
-        "-w",
-    ],
-    linkopts = select({
-        ":windows": ["-DEFAULTLIB:advapi32.lib"],  # InitializeSecurityDescriptor, SetSecurityDescriptorDacl
-        ":windows_msvc": ["-DEFAULTLIB:advapi32.lib"],
-        "//conditions:default": ["-lpthread"],
-    }),
+    linkopts = ["-llmdb"],
     visibility = ["//visibility:public"],
 )
 
-config_setting(
-    name = "windows",
-    values = {"cpu": "x64_windows"},
-)
-
-config_setting(
-    name = "windows_msvc",
-    values = {"cpu": "x64_windows_msvc"},
+genrule(
+    name = "copy-lmdb-license",
+    outs = ["LICENSE"],
+    cmd = "touch $@",
+    visibility = ["//visibility:public"],
 )
