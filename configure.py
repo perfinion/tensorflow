@@ -1403,6 +1403,13 @@ def set_build_strip_flag(environ_cp):
     write_to_bazelrc('build --strip=always')
 
 
+def set_system_libs_flag(environ_cp):
+  syslibs = environ_cp.get("TF_SYSTEM_LIBS", "")
+  syslibs = ",".join(sorted(syslibs.split(",")))
+  if syslibs and syslibs != "":
+    write_action_env_to_bazelrc("TF_SYSTEM_LIBS", syslibs)
+
+
 def set_windows_build_flags():
   if is_windows():
     # The non-monolithic build is not supported yet
@@ -1531,6 +1538,7 @@ def main():
   set_grpc_build_flags()
   set_cc_opt_flags(environ_cp)
   set_build_strip_flag(environ_cp)
+  set_system_libs_flag(environ_cp)
   set_windows_build_flags()
 
   if get_var(
