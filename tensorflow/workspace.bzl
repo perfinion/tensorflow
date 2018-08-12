@@ -388,6 +388,10 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
         urls = PROTOBUF_URLS,
         sha256 = PROTOBUF_SHA256,
         strip_prefix = PROTOBUF_STRIP_PREFIX,
+        system_build_file = clean_dep("//third_party/systemlibs:protobuf.BUILD"),
+        system_link_files = {
+            "//third_party/systemlibs:protobuf.bzl": "protobuf.bzl",
+        },
     )
 
     # We need to import the protobuf library under the names com_google_protobuf
@@ -398,6 +402,10 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
         urls = PROTOBUF_URLS,
         sha256 = PROTOBUF_SHA256,
         strip_prefix = PROTOBUF_STRIP_PREFIX,
+        system_build_file = clean_dep("//third_party/systemlibs:protobuf.BUILD"),
+        system_link_files = {
+            "//third_party/systemlibs:protobuf.bzl": "protobuf.bzl",
+        },
     )
 
     tf_http_archive(
@@ -405,6 +413,10 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
         urls = PROTOBUF_URLS,
         sha256 = PROTOBUF_SHA256,
         strip_prefix = PROTOBUF_STRIP_PREFIX,
+        system_build_file = clean_dep("//third_party/systemlibs:protobuf.BUILD"),
+        system_link_files = {
+            "//third_party/systemlibs:protobuf.bzl": "protobuf.bzl",
+        },
     )
 
     tf_http_archive(
