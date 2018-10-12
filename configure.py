@@ -1579,8 +1579,6 @@ def main():
   if is_ppc64le():
     write_action_env_to_bazelrc('OMP_NUM_THREADS', 1)
 
-  set_build_var(environ_cp, 'TF_NEED_IGNITE', 'Apache Ignite',
-                'with_ignite_support', True, 'ignite')
   xla_enabled_by_default = is_linux()
   set_build_var(environ_cp, 'TF_ENABLE_XLA', 'XLA JIT', 'with_xla_support',
                 xla_enabled_by_default, 'xla')
@@ -1688,6 +1686,14 @@ def main():
     config_info_line('verbs', 'Build with libverbs support.')
     config_info_line('ngraph', 'Build with Intel nGraph support.')
 
+  print('Preconfigured Bazel build configs to DISABLE default on features:')
+  config_info_line('noaws', 'Disable AWS S3 filesystem support.')
+  config_info_line('nogcp', 'Disable GCP support.')
+  config_info_line('nohdfs', 'Disable HDFS support.')
+  config_info_line('noignite', 'Disable Apacha Ignite support.')
+  config_info_line('nokafka', 'Disable Apache Kafka support.')
+
 
 if __name__ == '__main__':
   main()
+
