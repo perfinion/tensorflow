@@ -22,6 +22,7 @@ cc_toolchain_suite(
         "local|compiler": ":cc-compiler-local",
         "darwin|compiler": ":cc-compiler-darwin",
         "x64_windows|msvc-cl": ":cc-compiler-windows",
+        "k8": ":cc-compiler-local",
     },
 )
 
