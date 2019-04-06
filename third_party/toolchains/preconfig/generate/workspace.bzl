@@ -21,7 +21,7 @@ def _remote_config_workspace():
     container_pull(
         name = "ubuntu16.04",
         registry = "gcr.io",
-        repository = "tensorflow-testing/nosla-ubuntu16.04",
+        repository = "tensorflow-build-224104/nosla-ubuntu16.04",
         digest = container_digests["ubuntu16.04"],
     )
 

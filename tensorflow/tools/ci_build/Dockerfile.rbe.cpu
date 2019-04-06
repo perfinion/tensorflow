@@ -3,7 +3,7 @@
 #       --tag "gcr.io/tensorflow-testing/nosla-ubuntu16.04" .
 # $ docker push gcr.io/tensorflow-testing/nosla-ubuntu16.04
 
-FROM launcher.gcr.io/google/rbe-ubuntu16-04:r327695
+FROM launcher.gcr.io/google/rbe-ubuntu16-04:r346485
 LABEL maintainer="Yu Yi <yiyu@google.com>"
 
 # Copy install scripts

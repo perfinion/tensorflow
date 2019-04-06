@@ -30,7 +30,7 @@ platform(
     remote_execution_properties = """
         properties: {
             name: "container-image"
-            value:"docker://gcr.io/tensorflow-testing/nosla-ubuntu16.04@%s"
+            value:"docker://gcr.io/tensorflow-build-224104/nosla-ubuntu16.04@%s"
         }
         properties: {
             name: "Pool"
