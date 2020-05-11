@@ -7,25 +7,25 @@ filegroup(
 
 cc_library(
     name = "grpc",
-    linkopts = ["-lgrpc"],
+    linkopts = ["-lgrpc", "-lgpr"],
     visibility = ["//visibility:public"],
 )
 
 cc_library(
     name = "grpc++",
-    linkopts = ["-lgrpc++"],
+    linkopts = ["-lgrpc++", "-lgpr"],
     visibility = ["//visibility:public"],
 )
 
 cc_library(
     name = "grpc_unsecure",
-    linkopts = ["-lgrpc_unsecure"],
+    linkopts = ["-lgrpc_unsecure", "-lgpr"],
     visibility = ["//visibility:public"],
 )
 
 cc_library(
     name = "grpc++_unsecure",
-    linkopts = ["-lgrpc++_unsecure"],
+    linkopts = ["-lgrpc++_unsecure", "-lgpr"],
     visibility = ["//visibility:public"],
 )
 
