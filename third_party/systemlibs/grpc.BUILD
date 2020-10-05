@@ -18,6 +18,16 @@ cc_library(
 )
 
 cc_library(
+    name = "grpc++_public_hdrs",
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "grpc++_codegen_proto",
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
     name = "grpc_unsecure",
     linkopts = ["-lgrpc_unsecure", "-lgpr"],
     visibility = ["//visibility:public"],
