@@ -1,3 +1,4 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
 load(
     "@com_google_protobuf//:protobuf.bzl",
     "cc_proto_library",
@@ -12,11 +13,30 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 
+# Map of all well known protos.
+# name => (include path, imports)
+WELL_KNOWN_PROTO_MAP = {
+    "any" : ("google/protobuf/any.proto", []),
+    "api" : ("google/protobuf/api.proto", ["source_context", "type"]),
+    "compiler_plugin" : ("google/protobuf/compiler/plugin.proto", ["descriptor"]),
+    "descriptor" : ("google/protobuf/descriptor.proto", []),
+    "duration" : ("google/protobuf/duration.proto", []),
+    "empty" : ("google/protobuf/empty.proto", []),
+    "field_mask" : ("google/protobuf/field_mask.proto", []),
+    "source_context" : ("google/protobuf/source_context.proto", []),
+    "struct" : ("google/protobuf/struct.proto", []),
+    "timestamp" : ("google/protobuf/timestamp.proto", []),
+    "type" : ("google/protobuf/type.proto", ["any", "source_context"]),
+    "wrappers" : ("google/protobuf/wrappers.proto", []),
+}
+
 HEADERS = [
     "google/protobuf/any.pb.h",
     "google/protobuf/any.proto",
+    "google/protobuf/api.proto",
     "google/protobuf/arena.h",
     "google/protobuf/compiler/importer.h",
+    "google/protobuf/compiler/plugin.proto",
     "google/protobuf/descriptor.h",
     "google/protobuf/descriptor.pb.h",
     "google/protobuf/descriptor.proto",
@@ -32,9 +52,12 @@ HEADERS = [
     "google/protobuf/io/zero_copy_stream_impl_lite.h",
     "google/protobuf/map.h",
     "google/protobuf/repeated_field.h",
+    "google/protobuf/source_context.proto",
+    "google/protobuf/struct.proto",
     "google/protobuf/text_format.h",
     "google/protobuf/timestamp.pb.h",
     "google/protobuf/timestamp.proto",
+    "google/protobuf/type.proto",
     "google/protobuf/util/json_util.h",
     "google/protobuf/util/type_resolver_util.h",
     "google/protobuf/wrappers.pb.h",
@@ -102,3 +125,10 @@ py_library(
     srcs_version = "PY2AND3",
     visibility = ["//visibility:public"],
 )
+
+[proto_library(
+    name = proto[0] + "_proto",
+    srcs = [proto[1][0]],
+    deps = [dep + "_proto" for dep in proto[1][1]],
+    visibility = ["//visibility:public"],
+    ) for proto in WELL_KNOWN_PROTO_MAP.items()]
