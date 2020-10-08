@@ -43,6 +43,7 @@ VALID_LIBS = [
     "six_archive",
     "snappy",
     "swig",
+    "tblib_archive",
     "termcolor_archive",
     "wrapt",
     "zlib",
